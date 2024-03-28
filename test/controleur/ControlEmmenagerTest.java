@@ -38,7 +38,9 @@ class ControlEmmenagerTest {
 
 	@Test
 	void testAjouterDruide() {
-		fail("Not yet implemented");
+		ControlEmmenager controlEmmenager = new ControlEmmenager(village);
+		controlEmmenager.ajouterDruide("Panoramix", 10, 1, 5);
+		assertTrue(controlEmmenager.trouverHabitant("Panoramix")!=null);
 	}
 
 	@Test
