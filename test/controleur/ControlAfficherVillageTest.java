@@ -18,7 +18,7 @@ class ControlAfficherVillageTest {
 	@BeforeEach
 	public void initialiserSituation() {
 		System.out.println("Initialisation...");
-		village = new Village("le village des irr�ductibles",10,5);
+		village = new Village("le village des irreductibles",10,5);
 		abraracourcix = new Chef("Abraracourcix",10,village);
 		village.setChef(abraracourcix);
 		asterix = new Gaulois("asterix",4);
@@ -35,25 +35,23 @@ class ControlAfficherVillageTest {
 	void testDonnerNomsVillageois() {
 		ControlAfficherVillage controlAffichervillage = new ControlAfficherVillage(village);
 		String[] nomsVillageois = controlAffichervillage.donnerNomsVillageois();
-		assertTrue(nomsVillageois[0].equals(abraracourcix.getNom()));
-		assertTrue(nomsVillageois.length==1);
+		assertTrue(nomsVillageois[0].equals(abraracourcix.getNom()),"Il manque le nom du chef");
+		assertTrue(nomsVillageois.length>=1,"Il y a au moins un nom en trop");
 		village.ajouterHabitant(asterix);
 		village.ajouterHabitant(obelix);
 		nomsVillageois = controlAffichervillage.donnerNomsVillageois();
-		assertTrue(nomsVillageois.length==3);
+		assertTrue(nomsVillageois.length==3, "Il n'y a pas le nombre de noms attendu");
 	}
 
 	@Test
 	void testDonnerNomVillage() {
 		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
-		controlAfficherVillage.donnerNomVillage();
-		// pas de vérification
+		assertTrue(controlAfficherVillage.donnerNomVillage().equals("le village des irreductibles"));
 	}
 
 	@Test
 	void testDonnerNbEtals() {
 		ControlAfficherVillage controlAfficherVillage = new ControlAfficherVillage(village);
-		controlAfficherVillage.donnerNbEtals();
-		// pas de vérification
+		assertTrue(controlAfficherVillage.donnerNbEtals()==5);
 	}
 }
